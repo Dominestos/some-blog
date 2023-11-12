@@ -30,10 +30,15 @@
                             <div class="card-header">
                                 <div class="col-sm-6 d-flex align-items-center">
                                     <h3>{{ __('Category Info') }}</h3>
-                                    <div class="mx-3">
-                                        <a href="{{ route('admin.categories.edit', $category->id) }}"><i class="fas fa-edit fa-lg" style="color: #f4c01a"></i></a>
-                                        <a href="#"><i class="fas fa-trash-alt fa-lg mx-1" style="color: #ff0000;"></i></a>
-                                    </div>
+                                    <div class="d-flex mx-3">
+                                        <a href="{{ route('admin.categories.edit', $category->id) }}"><i class="fas fa-edit fa-lg mx-1" style="color: #f4c01a"></i></a>
+                                        <form action="{{ route('admin.categories.destroy', $category->id) }}" method="post">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="bg-transparent border-0">
+                                                <i class="fas fa-trash-alt fa-lg mx-1 text-danger" role="button"></i>
+                                            </button>
+                                        </form>                                    </div>
                                 </div>
                             </div>
 

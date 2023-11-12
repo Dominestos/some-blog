@@ -48,17 +48,23 @@
                                             <td>{{ $category->id }}</td>
                                             <td>{{ $category->title }}</td>
                                             <td>
-                                                <a href="{{ route('admin.categories.show', $category->id) }}"><i class="far fa-eye fa-lg mx-1" style="color: lightskyblue"></i></a>
-                                                <a href="{{ route('admin.categories.edit', $category->id) }}"><i class="fas fa-edit fa-lg" style="color: #f4c01a"></i></a>
-                                                <a href="#"><i class="fas fa-trash-alt fa-lg mx-1" style="color: #ff0000;"></i></a>
+                                                <div class="d-flex">
+                                                    <a href="{{ route('admin.categories.show', $category->id) }}"><i class="far fa-eye fa-lg mx-2" style="color: lightskyblue"></i></a>
+                                                    <a href="{{ route('admin.categories.edit', $category->id) }}"><i class="fas fa-edit fa-lg mx-2" style="color: #f4c01a"></i></a>
+                                                    <form action="{{ route('admin.categories.destroy', $category->id) }}" method="post">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button type="submit" class="bg-transparent border-0">
+                                                            <i class="fas fa-trash-alt fa-lg mx-1 text-danger" role="button"></i>
+                                                        </button>
+                                                    </form>
+                                                </div>
                                             </td>
                                         </tr>
                                     @endforeach
                                     </tbody>
                                 </table>
                             </div>
-
-
                         </div>
                     </div>
                 </div>
