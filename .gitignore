@@ -2,6 +2,8 @@
 /node_modules
 /public/build
 /public/assets
+/public/dist
+/public/plugins
 /public/hot
 /public/storage
 /storage/*.key
