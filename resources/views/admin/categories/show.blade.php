@@ -6,7 +6,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0">Dashboard</h1>
+                        <h1 class="m-0">{{ $category->title }}</h1>
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
@@ -23,9 +23,37 @@
         <section class="content">
             <div class="container-fluid">
                 <!-- Small boxes (Stat box) -->
-                <div class="row">
-                    <div class="col-12">
-                        <h2>{{ __('Category show') }}</h2>
+                <div class="row justify-content-center">
+                    <div class="col-8">
+                        <div class="card">
+
+                            <div class="card-header">
+                                <div class="col-sm-6 d-flex align-items-center">
+                                    <h3>{{ __('Category Info') }}</h3>
+                                    <div class="mx-3">
+                                        <a href="{{ route('admin.categories.edit', $category->id) }}"><i class="fas fa-edit fa-lg" style="color: #f4c01a"></i></a>
+                                        <a href="#"><i class="fas fa-trash-alt fa-lg mx-1" style="color: #ff0000;"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card-body table-responsive p-0" style="height: 300px;">
+                                <table class="table table-head-fixed text-nowrap">
+                                    <tbody>
+                                        <tr>
+                                            <td>ID:</td>
+                                            <td>{{ $category->id }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>{{ __('Title') }}:</td>
+                                            <td>{{ $category->title }}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+
+                        </div>
                     </div>
                 </div>
                 <!-- /.row -->
