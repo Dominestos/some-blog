@@ -6,10 +6,10 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Category\StoreRequest;
 use App\Http\Requests\Admin\Category\UpdateRequest;
 use App\Models\Category;
-use Illuminate\Http\Request;
 
-class CategoryController extends Controller
+class CategoriesController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      */
@@ -75,4 +75,5 @@ class CategoryController extends Controller
 
         return redirect()->route('admin.categories.index');
     }
+
 }

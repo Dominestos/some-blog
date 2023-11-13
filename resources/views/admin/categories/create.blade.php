@@ -28,7 +28,7 @@
                         <form action="{{ route('admin.categories.store') }}" method="post" class="w-25">
                             @csrf
                             <div class="form-group">
-                                <input name="title" type="text" class="form-control" plaseholder="{{ __('Enter Category Name') }}">
+                                <input name="title" type="text" class="form-control" placeholder="{{ __('Enter Category Name') }}">
                             </div>
                             @error('title')
                             <p class="text-danger">{{ $message }}</p>

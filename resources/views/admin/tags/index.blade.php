@@ -6,7 +6,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0">{{ __('Categories') }}</h1>
+                        <h1 class="m-0">{{ __('Tags') }}</h1>
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
@@ -28,8 +28,8 @@
                         <div class="card">
 
                             <div class="card-header">
-                                <div class="col-4 float-sm-right">
-                                    <a href="{{ route('admin.categories.create') }}" class="btn btn-block btn-primary">{{ __('Add new category') }}</a>
+                                <div class="col-3 float-sm-right">
+                                    <a href="{{ route('admin.tags.create') }}" class="btn btn-block btn-primary">{{ __('Add new tag') }}</a>
                                 </div>
                             </div>
 
@@ -43,15 +43,15 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    @foreach($categories as $category)
+                                    @foreach($tags as $tag)
                                         <tr>
-                                            <td>{{ $category->id }}</td>
-                                            <td>{{ $category->title }}</td>
+                                            <td>{{ $tag->id }}</td>
+                                            <td>{{ $tag->title }}</td>
                                             <td>
                                                 <div class="d-flex">
-                                                    <a href="{{ route('admin.categories.show', $category->id) }}"><i class="far fa-eye fa-lg mx-2" style="color: lightskyblue"></i></a>
-                                                    <a href="{{ route('admin.categories.edit', $category->id) }}"><i class="fas fa-edit fa-lg mx-2" style="color: #f4c01a"></i></a>
-                                                    <form action="{{ route('admin.categories.destroy', $category->id) }}" method="post">
+                                                    <a href="{{ route('admin.tags.show', $tag->id) }}"><i class="far fa-eye fa-lg mx-2" style="color: lightskyblue"></i></a>
+                                                    <a href="{{ route('admin.tags.edit', $tag->id) }}"><i class="fas fa-edit fa-lg mx-2" style="color: #f4c01a"></i></a>
+                                                    <form action="{{ route('admin.tags.destroy', $tag->id) }}" method="post">
                                                         @csrf
                                                         @method('DELETE')
                                                         <button type="submit" class="bg-transparent border-0">
