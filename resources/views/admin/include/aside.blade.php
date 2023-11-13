@@ -5,6 +5,14 @@
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 <li class="nav-item">
+                    <a href="{{ route('admin.posts.index') }}" class="nav-link">
+                        <i class="nav-icon fas fa-icons"></i>
+                        <p>
+                            {{ __('Posts') }}
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a href="{{ route('admin.categories.index') }}" class="nav-link">
                         <i class="nav-icon fas fa-filter"></i>
                         <p>

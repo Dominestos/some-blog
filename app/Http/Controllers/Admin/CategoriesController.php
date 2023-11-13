@@ -34,7 +34,7 @@ class CategoriesController extends Controller
     {
         $data = $request->validated();
 
-        Category::firstOrCreate(['title' => $data['title']]);
+        Category::firstOrCreate($data);
         return redirect()->route('admin.categories.index');
     }
 

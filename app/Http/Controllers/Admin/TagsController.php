@@ -33,7 +33,7 @@ class TagsController extends Controller
     {
         $data = $request->validated();
 
-        Tag::firstOrCreate(['title' => $data['title']]);
+        Tag::firstOrCreate($data);
         return redirect()->route('admin.tags.index');
     }
 
