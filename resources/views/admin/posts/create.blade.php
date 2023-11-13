@@ -72,6 +72,21 @@
                                 @enderror
                             </div>
                             <div class="form-group">
+                                <select name="category_id" class="form-control w-50">
+                                    @foreach($categories as $category)
+                                        <option value="{{ $category->id }}"{{ $category->id == old('category_id') ? ' selected' : '' }}>{{ $category->title }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>{{ __('Tags') }}</label>
+                                <select class="select2bs4" name="tag_ids[]" multiple="multiple" data-placeholder="{{ __('Select Tags') }}" style="width: 50%;">
+                                    @foreach($tags as $tag)
+                                        <option {{ is_array(old('tag_ids')) && in_array($tag->id, old('tag_ids')) ? 'selected' : '' }} value="{{ $tag->id }}">{{ $tag->title }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="form-group">
                                 <input type="submit" class="btn btn-primary" value="{{ __('Add') }}">
                             </div>
                         </form>
