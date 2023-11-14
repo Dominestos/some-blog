@@ -32,4 +32,14 @@ class UpdateRequest extends FormRequest
             'tag_ids.*' => 'nullable|integer|exists:tags,id',
         ];
     }
+
+    public function messages()
+    {
+        return [
+            'preview_image.required' => 'Preview image is required',
+            'preview_image.image' => 'Preview file type must be an image',
+            'main_image.required' => 'Main image is required',
+            'main_image.image' => 'Main image file type must be an image',
+        ];
+    }
 }
