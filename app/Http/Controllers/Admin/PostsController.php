@@ -42,14 +42,17 @@ class PostsController extends Controller
             $data = $request->validated();
             $tagIds = $data['tag_ids'];
             unset($data['tag_ids']);
-            $data['preview_image'] = Storage::put('/images', $data['preview_image']);
-            $data['main_image'] = Storage::put('/images', $data['main_image']);
+            $data['preview_image'] = Storage::disk('public')->put('/images', $data['preview_image']);
+            $data['main_image'] = Storage::disk('public')->put('/images', $data['main_image']);
 
             $post = Post::firstOrCreate($data);
             $post->tags()->attach($tagIds);
             return redirect()->route('admin.posts.index');
+
         } catch (Exception $exception) {
+
             abort('404');
+
         }
     }
 
@@ -66,7 +69,10 @@ class PostsController extends Controller
      */
     public function edit(Post $post)
     {
-        return view('admin.posts.edit', compact('post'));
+        $selectedTags = [];
+        $categories = Category::all();
+        $tags = Tag::all();
+        return view('admin.posts.edit', compact('post', 'categories', 'tags'));
     }
 
     /**
@@ -74,11 +80,26 @@ class PostsController extends Controller
      */
     public function update(UpdateRequest $request, Post $post)
     {
-        $data = $request->validated();
+        try {
+            $data = $request->validated();
+            $tagIds = $data['tag_ids'];
+            unset($data['tag_ids']);
 
-        $post->update($data);
+            if (!empty($data['preview_image'])) {
+                Storage::disk('public')->delete($post->preview_image);
+                $data['preview_image'] = Storage::disk('public')->put('/images', $data['preview_image']);
+            }
+            if (!empty($data['main_image'])) {
+                Storage::disk('public')->delete($post->main_image);
+                $data['main_image'] = Storage::disk('public')->put('/images', $data['main_image']);
+            }
 
-        return view('admin.posts.show', compact('post'));
+            $post->update($data);
+            $post->tags()->sync($tagIds);
+            return view('admin.posts.show', compact('post'));
+        } catch (Exception $exception) {
+            abort('404');
+        }
     }
 
     /**
