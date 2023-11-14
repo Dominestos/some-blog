@@ -17,10 +17,15 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', IndexController::class)->name('blog.index');
 
-Route::group(['namespace' => 'App\Http\Controllers\Admin', 'prefix' => 'admin'], function() {
-    Route::get('/', Main\IndexController::class)->name('admin.blog.index');
-    Route::resource('categories', CategoriesController::class)->names('admin.categories');
-    Route::resource('tags', TagsController::class)->names('admin.tags');
+Route::namespace('App\Http\Controllers\Admin')->prefix('admin')->name('admin.')->group(function() {
+        Route::get('/', Main\IndexController::class)->name('blog.index');
+        Route::resources(
+            [
+                'categories' => CategoriesController::class,
+                'tags' => TagsController::class,
+                'posts' => PostsController::class,
+            ]
+        );
 });
 
 Auth::routes();
