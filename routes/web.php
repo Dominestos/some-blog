@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\CategoriesController;
+use App\Http\Controllers\Admin\UsersController;
 use App\Http\Controllers\Main\IndexController;
 use Illuminate\Support\Facades\Route;
 
@@ -21,6 +22,7 @@ Route::namespace('App\Http\Controllers\Admin')->prefix('admin')->name('admin.')-
         Route::get('/', Main\IndexController::class)->name('blog.index');
         Route::resources(
             [
+                'users' => UsersController::class,
                 'categories' => CategoriesController::class,
                 'tags' => TagsController::class,
                 'posts' => PostsController::class,
