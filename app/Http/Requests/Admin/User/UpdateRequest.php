@@ -22,15 +22,11 @@ class UpdateRequest extends FormRequest
      */
     public function rules(): array
     {
-        $user = $this->route('user');
         return [
             'name' => 'required|string',
-            'email' => [
-                'required',
-                'string',
-                'email',
-                Rule::unique('users')->ignore($user->id),
-            ],
+            'role' => 'required|integer',
+            'user_id' =>'required|integer|exists:users,id',
+            'email' => 'required|string|email|unique:users,email,' . $this->user_id,
         ];
     }
 }

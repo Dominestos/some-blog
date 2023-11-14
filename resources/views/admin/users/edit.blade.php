@@ -40,7 +40,23 @@
                                 <p class="text-danger">{{ $message }}</p>
                                 @enderror
                             </div>
-                            <input type="submit" class="btn btn-primary" value="{{ __('Update') }}">
+                            <div class="form-group">
+                                <label>{{ __('Choose User Role') }}</label>
+                                <select name="role" class="form-control">
+                                    @foreach($roles as $id => $role)
+                                        <option value="{{ $id }}"{{ $id == $user->role ? ' selected' : '' }}>{{ $role }}</option>
+                                    @endforeach
+                                </select>
+                                @error('role')
+                                <p class="text-danger">{{ $message }}</p>
+                                @enderror
+                            </div>
+                            <div class="form-group">
+                                <input type="hidden" name="user_id" value="{{ $user->id }}">
+                            </div>
+                            <div class="form-group">
+                                <input type="submit" class="btn btn-primary" value="{{ __('Update') }}">
+                            </div>
                         </form>
                     </div>
                 </div>
