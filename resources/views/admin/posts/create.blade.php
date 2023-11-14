@@ -72,6 +72,7 @@
                                 @enderror
                             </div>
                             <div class="form-group">
+                                <label>{{ __('Choose Category') }}</label>
                                 <select name="category_id" class="form-control w-50">
                                     @foreach($categories as $category)
                                         <option value="{{ $category->id }}"{{ $category->id == old('category_id') ? ' selected' : '' }}>{{ $category->title }}</option>
