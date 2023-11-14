@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\Admin\CategoriesController;
+use App\Http\Controllers\Admin\PostsController;
+use App\Http\Controllers\Admin\TagsController;
 use App\Http\Controllers\Admin\UsersController;
 use App\Http\Controllers\Main\IndexController;
 use Illuminate\Support\Facades\Route;
@@ -18,7 +20,11 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', IndexController::class)->name('blog.index');
 
-Route::namespace('App\Http\Controllers\Admin')->prefix('admin')->name('admin.')->group(function() {
+Route::namespace('App\Http\Controllers\Admin')
+    ->prefix('admin')
+    ->name('admin.')
+    ->middleware(['auth', 'admin'])
+    ->group(function () {
         Route::get('/', Main\IndexController::class)->name('blog.index');
         Route::resources(
             [
@@ -28,7 +34,7 @@ Route::namespace('App\Http\Controllers\Admin')->prefix('admin')->name('admin.')-
                 'posts' => PostsController::class,
             ]
         );
-});
+    });
 
 Auth::routes();
 
