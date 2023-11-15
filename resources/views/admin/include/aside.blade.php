@@ -2,7 +2,7 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Sidebar -->
     <div class="sidebar">
-            <a href="{{route('admin.blog.index')}}" class="brand-link nav-item">
+            <a href="{{route('admin.main.index')}}" class="brand-link nav-item">
                 <i class="fas fa-home mx-2"></i>
                 <span class="brand-text font-weight-light">Some blog</span>
             </a>
