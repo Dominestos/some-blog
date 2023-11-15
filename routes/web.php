@@ -23,7 +23,7 @@ Route::get('/', IndexController::class)->name('blog.index');
 Route::namespace('App\Http\Controllers\Admin')
     ->prefix('admin')
     ->name('admin.')
-    ->middleware(['auth', 'admin'])
+    ->middleware(['auth', 'admin', 'verified'])
     ->group(function () {
         Route::get('/', Main\IndexController::class)->name('blog.index');
         Route::resources(
@@ -36,5 +36,5 @@ Route::namespace('App\Http\Controllers\Admin')
         );
     });
 
-Auth::routes();
+Auth::routes(['verify' => true]);
 

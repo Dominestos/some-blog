@@ -10,6 +10,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
+use Illuminate\Auth\Events\Registered;
 
 class UsersController extends Controller
 {
@@ -43,7 +44,9 @@ class UsersController extends Controller
 
         $data['password'] = Hash::make($password);
 
-        User::firstOrCreate(['email' => $data['email']], $data);
+        $user = User::firstOrCreate(['email' => $data['email']], $data);
+
+        event(new Registered($user));
 
         Mail::to($data['email'])->send(new PasswordMail($password));
         return redirect()->route('admin.users.index');
