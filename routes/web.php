@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\CategoriesController;
 use App\Http\Controllers\Main\IndexController;
+use App\Http\Controllers\Personal\Liked\DeleteController;
 use App\Http\Controllers\Personal\Main\IndexController as PersonalIndexController;
 use App\Http\Controllers\Admin\Main\IndexController as AdminIndexController;
 use App\Http\Controllers\Personal\Liked\IndexController as LikedIndexController;
@@ -36,6 +37,7 @@ Route::namespace('App\Http\Controllers\Personal')
         });
         Route::namespace('Liked')->prefix('liked')->group(function () {
             Route::get('/', LikedIndexController::class)->name('liked.index');
+            Route::delete('/{post}', DeleteController::class)->name('liked.delete');
         });
         Route::namespace('Comment')->prefix('comment')->group(function () {
             Route::get('/', CommentIndexController::class)->name('comment.index');
