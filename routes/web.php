@@ -2,7 +2,8 @@
 
 use App\Http\Controllers\Admin\CategoriesController;
 use App\Http\Controllers\Main\IndexController;
-use App\Http\Controllers\Personal\Liked\DeleteController;
+use App\Http\Controllers\Personal\Liked\DeleteController as LikedDeleteController;
+use App\Http\Controllers\Personal\Comment\DeleteController as CommentDeleteController;
 use App\Http\Controllers\Personal\Main\IndexController as PersonalIndexController;
 use App\Http\Controllers\Admin\Main\IndexController as AdminIndexController;
 use App\Http\Controllers\Personal\Liked\IndexController as LikedIndexController;
@@ -37,10 +38,13 @@ Route::namespace('App\Http\Controllers\Personal')
         });
         Route::namespace('Liked')->prefix('liked')->group(function () {
             Route::get('/', LikedIndexController::class)->name('liked.index');
-            Route::delete('/{post}', DeleteController::class)->name('liked.delete');
+            Route::delete('/{post}', LikedDeleteController::class)->name('liked.delete');
         });
         Route::namespace('Comment')->prefix('comment')->group(function () {
             Route::get('/', CommentIndexController::class)->name('comment.index');
+            Route::get('/{comment}', EditController::class)->name('comment.edit');
+            Route::patch('/{comment}', UpdateController::class)->name('comment.update');
+            Route::delete('/{comment}', CommentDeleteController::class)->name('comment.destroy');
         });
     });
 
