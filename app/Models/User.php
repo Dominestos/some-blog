@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Notifications\SendVerifyWithQueueNotification;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -27,7 +28,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'name',
         'email',
         'password',
-        'role'
+        'role',
     ];
 
     /**
@@ -57,4 +58,10 @@ class User extends Authenticatable implements MustVerifyEmail
             self::ROLE_READER => 'Reader',
         ];
     }
+
+    public function sendEmailVerificationNotification()
+    {
+        $this->notify(new SendVerifyWithQueueNotification());
+    }
+
 }
