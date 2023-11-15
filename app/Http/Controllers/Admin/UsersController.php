@@ -5,8 +5,13 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\User\StoreRequest;
 use App\Http\Requests\Admin\User\UpdateRequest;
+use App\Jobs\StoreUserJob;
+use App\Mail\User\PasswordMail;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Str;
+use Illuminate\Auth\Events\Registered;
 
 class UsersController extends Controller
 {
@@ -36,9 +41,8 @@ class UsersController extends Controller
     {
         $data = $request->validated();
 
-        $data['password'] = Hash::make($data['password']);
+        StoreUserJob::dispatch($data);
 
-        User::firstOrCreate(['email' => $data['email']], $data);
         return redirect()->route('admin.users.index');
     }
 
