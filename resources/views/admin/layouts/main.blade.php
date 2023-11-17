@@ -49,6 +49,9 @@
                     <a class="nav-link" href="{{ route('blog.index') }}" role="button">{{ __('User Panel') }}</a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" href="{{ route('personal.main.index') }}" role="button">{{ __('Personal Panel') }}</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="{{ route('admin.main.index') }}" role="button">{{ __('Admin Panel') }}</a>
                 </li>
             </ul>

@@ -26,9 +26,6 @@
                     <li class="nav-item active">
                         <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="about.html">About</a>
-                    </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="blogDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Blog</a>
                         <div class="dropdown-menu" aria-labelledby="blogDropdown">
@@ -36,15 +33,11 @@
                             <a class="dropdown-item" href="blog-single.html">Blog Post</a>
                         </div>
                     </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Pages</a>
-                        <div class="dropdown-menu" aria-labelledby="pagesDropdown">
-                            <a class="dropdown-item" href="404.html">404</a>
-                            <a class="dropdown-item" href="coming-soon.html">Coming Soon</a>
-                        </div>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('admin.main.index') }}">{{ __('Admin Panel') }}</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="contact.html">Contact</a>
+                        <a class="nav-link" href="{{ route('personal.main.index') }}">{{ __('Personal Panel') }}</a>
                     </li>
                 </ul>
                 <ul class="navbar-nav mt-2 mt-lg-0">
