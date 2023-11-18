@@ -25,7 +25,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::namespace('App\Http\Controllers\Main')->group(function () {
-    Route::get('/', IndexController::class)->name('blog.index');
+    Route::get('/', IndexController::class)->name('main.index');
 });
 
 Route::namespace('App\Http\Controllers\Personal')

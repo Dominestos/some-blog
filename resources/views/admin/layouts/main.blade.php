@@ -46,7 +46,7 @@
                     <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('blog.index') }}" role="button">{{ __('User Panel') }}</a>
+                    <a class="nav-link" href="{{ route('main.index') }}" role="button">{{ __('User Panel') }}</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('personal.main.index') }}" role="button">{{ __('Personal Panel') }}</a>
